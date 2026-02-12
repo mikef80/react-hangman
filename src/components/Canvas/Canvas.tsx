@@ -4,10 +4,10 @@ import { HelperGrid } from "../HelperGrid/HelperGrid";
 
 const steps = [
   (ctx: CanvasRenderingContext2D) => line(ctx, 40, 380, 260, 380), // 1 — Track
-  (ctx: CanvasRenderingContext2D) => rect(ctx, 60, 380, 20, -40), // 2 — Left wheel
-  (ctx: CanvasRenderingContext2D) => rect(ctx, 220, 380, 20, -40), // 3 — Right wheel
-  (ctx: CanvasRenderingContext2D) => rect(ctx, 40, 340, 220, -30), // 4 — Buffer beam (front plate)
-  (ctx: CanvasRenderingContext2D) => circle(ctx, 60, 325, 10), // 5 — Left buffer
+  (ctx: CanvasRenderingContext2D) => rect(ctx, 60, 380, 20, -40, "white"), // 2 — Left wheel
+  (ctx: CanvasRenderingContext2D) => rect(ctx, 220, 380, 20, -40, "white"), // 3 — Right wheel
+  (ctx: CanvasRenderingContext2D) => rect(ctx, 40, 340, 220, -30, "red"), // 4 — Buffer beam (front plate)
+  (ctx: CanvasRenderingContext2D) => circle(ctx, 60, 325, 10, "black"), // 5 — Left buffer
   (ctx: CanvasRenderingContext2D) => circle(ctx, 240, 325, 10), // 6 — Right buffer
   (ctx: CanvasRenderingContext2D) => rect(ctx, 50, 310, 200, -200), // 7 — Cab
   (ctx: CanvasRenderingContext2D) => ellipseArc(ctx, 150, 310, 80, 120, 180, 0), // 8 — Boiler Frame

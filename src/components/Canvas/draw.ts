@@ -11,10 +11,19 @@ export function line(
   ctx.stroke();
 }
 
-export function circle(ctx: CanvasRenderingContext2D, x: number, y: number, r: number) {
+export function circle(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  r: number,
+  colour: string = "",
+) {
+  ctx.fillStyle = colour;
+
   ctx.beginPath();
   ctx.arc(x, y, r, 0, Math.PI * 2);
   ctx.stroke();
+  ctx.fill();
 }
 
 export function rect(
@@ -23,10 +32,12 @@ export function rect(
   y: number,
   w: number,
   h: number,
-  colour:string
+  colour: string = "",
 ) {
+  ctx.fillStyle = colour;
+
   ctx.beginPath();
-  ctx.rect(x, y, w, h);
+  ctx.fillRect(x, y, w, h);
   ctx.stroke();
 }
 
