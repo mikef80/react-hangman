@@ -104,7 +104,10 @@ export function cloud(
   scaleX: number = 1,
   scaleY: number = 1,
   rotate: number = 1,
+  colour: string = "white",
 ) {
+  ctx.fillStyle = colour;
+
   ctx.save();
   ctx.translate(x, y);
   ctx.scale(scaleX, scaleY);
