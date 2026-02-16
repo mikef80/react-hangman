@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import styles from "./App.module.scss";
 import { handleSubmit } from "./helpers/helperFunctions";
 import { gameReducer, initialState } from "./helpers/gameReducer";
+import WrongGuesses from "./components/WrongGuesses/WrongGuesses";
 
 function App() {
   const [word, setWord] = useState("chicken");
@@ -20,7 +21,7 @@ function App() {
         max={1}
         onChange={() => handleSubmit(word, dispatch)}
       />
-      <p>{...state.wrongLetters}</p>
+      <WrongGuesses letters={state.wrongLetters}/>
     </div>
   );
 }

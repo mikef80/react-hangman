@@ -20,6 +20,8 @@ const steps = [
   (ctx: CanvasRenderingContext2D) => cloud(ctx, -10, 100, 1.1, 0.5, 30), // 15 - Cloud 1
 ];
 
+
+
 const drawHangman = (ctx: CanvasRenderingContext2D, wrongGuesses: number) => {
   const canvas = document.getElementById("myCanvas");
 
