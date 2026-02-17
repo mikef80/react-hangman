@@ -4,11 +4,15 @@ export function line(
   y1: number,
   x2: number,
   y2: number,
+  colour: string = "",
 ) {
+  ctx.save();
+  if (colour) ctx.strokeStyle = colour;
   ctx.beginPath();
   ctx.moveTo(x1, y1);
   ctx.lineTo(x2, y2);
   ctx.stroke();
+  ctx.restore();
 }
 
 export function circle(
@@ -18,12 +22,14 @@ export function circle(
   r: number,
   colour: string = "",
 ) {
-  ctx.fillStyle = colour;
+  ctx.save();
+  if (colour) ctx.fillStyle = colour;
 
   ctx.beginPath();
   ctx.arc(x, y, r, 0, Math.PI * 2);
   ctx.stroke();
   ctx.fill();
+  ctx.restore();
 }
 
 export function rect(
@@ -34,14 +40,18 @@ export function rect(
   h: number,
   colour: string = "",
 ) {
-  ctx.fillStyle = colour;
+  ctx.save();
+  if (colour) ctx.fillStyle = colour;
+  if (colour) ctx.strokeStyle = colour;
 
   ctx.beginPath();
-  ctx.fillRect(x, y, w, h);
+  ctx.rect(x, y, w, h);
+  ctx.fill();
   ctx.stroke();
+  ctx.restore();
 }
 
-export function arc(
+/* export function arc(
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
@@ -50,9 +60,11 @@ export function arc(
   end: number,
   anticlockwise = false,
 ) {
+  ctx.save();
   ctx.beginPath();
   ctx.arc(x, y, r, start, end, anticlockwise);
   ctx.stroke();
+  ctx.restore();
 }
 
 export function arcDeg(
@@ -65,10 +77,12 @@ export function arcDeg(
   anticlockwise = false,
 ) {
   const deg = (d: number) => (d * Math.PI) / 180;
+  ctx.save();
   ctx.beginPath();
   ctx.arc(x, y, r, deg(startDeg), deg(endDeg), anticlockwise);
   ctx.stroke();
-}
+  ctx.restore();
+} */
 
 export function ellipseArc(
   ctx: CanvasRenderingContext2D,
@@ -82,7 +96,7 @@ export function ellipseArc(
   anticlockwise = false,
 ) {
   const deg = (d: number) => (d * Math.PI) / 180;
-
+  ctx.save();
   ctx.beginPath();
   ctx.ellipse(
     x,
@@ -95,6 +109,7 @@ export function ellipseArc(
     anticlockwise,
   );
   ctx.stroke();
+  ctx.restore();
 }
 
 export function cloud(
