@@ -121,7 +121,8 @@ export function cloud(
   rotate: number = 1,
   colour: string = "white",
 ) {
-  ctx.fillStyle = colour;
+  if (colour) ctx.strokeStyle = colour;
+  if (colour) ctx.fillStyle = colour;
 
   ctx.save();
   ctx.translate(x, y);

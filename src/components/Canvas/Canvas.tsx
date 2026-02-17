@@ -4,8 +4,8 @@ import { HelperGrid } from "../HelperGrid/HelperGrid";
 
 const steps = [
   (ctx: CanvasRenderingContext2D) => line(ctx, 40, 380, 260, 380, "white"), // 1 — Track
-  (ctx: CanvasRenderingContext2D) => rect(ctx, 60, 378.5, 20, -40, "white"), // 2 — Left wheel
-  (ctx: CanvasRenderingContext2D) => rect(ctx, 220, 378.5, 20, -40, "white"), // 3 — Right wheel
+  (ctx: CanvasRenderingContext2D) => rect(ctx, 60, 378.5, 20, -40, "lightgrey"), // 2 — Left wheel
+  (ctx: CanvasRenderingContext2D) => rect(ctx, 220, 378.5, 20, -40, "lightgrey"), // 3 — Right wheel
   (ctx: CanvasRenderingContext2D) => rect(ctx, 40, 338.5, 220, -30, "black"), // 4 — Buffer beam (front plate)
   (ctx: CanvasRenderingContext2D) => circle(ctx, 60, 323.5, 10, "grey"), // 5 — Left buffer
   (ctx: CanvasRenderingContext2D) => circle(ctx, 240, 323.5, 10, "grey"), // 6 — Right buffer
@@ -16,8 +16,8 @@ const steps = [
   (ctx: CanvasRenderingContext2D) => rect(ctx, 40, 91.5, 220, 10, "black"), // 11 — Cab roof
   (ctx: CanvasRenderingContext2D) => circle(ctx, 90, 150, 25, "black"), // 12 — Left Window
   (ctx: CanvasRenderingContext2D) => circle(ctx, 210, 150, 25, "black"), // 13 — Right Window
-  (ctx: CanvasRenderingContext2D) => cloud(ctx, -40, 140, 1.1, 0.5, 30), // 14 - Cloud 1
-  (ctx: CanvasRenderingContext2D) => cloud(ctx, -10, 100, 1.1, 0.5, 30), // 15 - Cloud 1
+  (ctx: CanvasRenderingContext2D) => cloud(ctx, -40, 140, 1.1, 0.5, 30,'white'), // 14 - Cloud 1
+  (ctx: CanvasRenderingContext2D) => cloud(ctx, -10, 100, 1.1, 0.5, 30,'white'), // 15 - Cloud 1
 ];
 
 const drawHangman = (ctx: CanvasRenderingContext2D, remainingGuesses: number) => {
