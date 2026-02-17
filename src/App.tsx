@@ -13,7 +13,7 @@ function App() {
   return (
     <div className={styles.container}>
       <Header />
-      <Canvas wrongGuesses={state.wrongCount} />
+      <Canvas remainingGuesses={state.remainingGuesses} />
       <input
         type='text'
         name='guess'

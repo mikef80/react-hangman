@@ -1,5 +1,5 @@
 export type GameState = {
-  wrongCount: number;
+  remainingGuesses: number;
   wrongLetters: string[];
 };
 
@@ -8,7 +8,7 @@ export type GameAction =
   | { type: "RESET" };
 
 export const initialState: GameState = {
-  wrongCount: 0,
+  remainingGuesses: 15,
   wrongLetters: [],
 };
 
@@ -16,7 +16,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
     case "WRONG_GUESS":
       return {
-        wrongCount: state.wrongCount + 1,
+        remainingGuesses: state.remainingGuesses - 1,
         wrongLetters: [...state.wrongLetters, action.letter],
       };
 
