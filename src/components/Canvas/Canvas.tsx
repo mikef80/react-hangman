@@ -33,7 +33,7 @@ const drawHangman = (ctx: CanvasRenderingContext2D, remainingGuesses: number) =>
     steps[i]?.(ctx);
   }
 
-  HelperGrid(ctx, canvas.clientWidth, canvas.clientHeight, 20);
+  // HelperGrid(ctx, canvas.clientWidth, canvas.clientHeight, 20);
 };
 
 const Canvas = ({ remainingGuesses }: { remainingGuesses: number }) => {

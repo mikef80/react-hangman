@@ -3,6 +3,11 @@ export const wrongGuess = (letter: string) => ({
   letter,
 });
 
+export const correctGuess = (letter: string) => ({
+  type: "CORRECT_GUESS" as const,
+  letter
+})
+
 export const resetGame = () => ({
   type: "RESET" as const,
 });

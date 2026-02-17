@@ -5,6 +5,7 @@ import styles from "./App.module.scss";
 import { handleSubmit } from "./helpers/helperFunctions";
 import { gameReducer, initialState } from "./helpers/gameReducer";
 import WrongGuesses from "./components/WrongGuesses/WrongGuesses";
+import WordGrid from "./components/WordGrid/WordGrid";
 
 function App() {
   const [word, setWord] = useState("chicken");
@@ -14,6 +15,7 @@ function App() {
     <div className={styles.container}>
       <Header />
       <Canvas remainingGuesses={state.remainingGuesses} />
+      <WordGrid word={word} correctLetters={state.correctLetters} />
       <input
         type='text'
         name='guess'
@@ -21,7 +23,7 @@ function App() {
         max={1}
         onChange={() => handleSubmit(word, dispatch)}
       />
-      <WrongGuesses letters={state.wrongLetters}/>
+      <WrongGuesses letters={state.wrongLetters} />
     </div>
   );
 }
