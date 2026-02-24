@@ -28,7 +28,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (state.gameStatus === "lost") {
+    if (state.gameStatus === "lost" || state.gameStatus === "won") {
       setShowStatus(true);
     }
   }, [state]);
@@ -39,7 +39,7 @@ function App() {
       <Canvas remainingGuesses={state.remainingGuesses} />
       <WordGrid word={state.word} correctLetters={state.correctLetters} />
       <WrongGuesses letters={state.wrongLetters} />
-      {showStatus && <GameStatus />}
+      {showStatus && <GameStatus status={state.gameStatus} />}
     </div>
   );
 }
