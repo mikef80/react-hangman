@@ -17,7 +17,6 @@ function App() {
       if (e.repeat) return;
 
       if (/^[a-zA-Z]$/.test(e.key)) {
-        console.log("Pressed:", e.key);
         handleSubmit(e.key, state.word, dispatch);
       }
     };
@@ -29,7 +28,9 @@ function App() {
 
   useEffect(() => {
     if (state.gameStatus === "lost" || state.gameStatus === "won") {
-      setShowStatus(true);
+      setTimeout(() => {
+        setShowStatus(true);
+      }, 1000);
     }
   }, [state]);
 
