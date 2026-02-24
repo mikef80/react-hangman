@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import Canvas from "./components/Canvas/Canvas";
 import Header from "./components/Header/Header";
 import styles from "./App.module.scss";
@@ -8,21 +8,29 @@ import WrongGuesses from "./components/WrongGuesses/WrongGuesses";
 import WordGrid from "./components/WordGrid/WordGrid";
 
 function App() {
-  const [word, setWord] = useState("chicken");
   const [state, dispatch] = useReducer(gameReducer, initialState);
+  const [inputDisabled, setInputDisabled] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.repeat) return;
+
+      if (/^[a-zA-Z]$/.test(e.key)) {
+        console.log("Pressed:", e.key);
+        handleSubmit(e.key, state.word, dispatch);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <div className={styles.container}>
       <Header />
       <Canvas remainingGuesses={state.remainingGuesses} />
-      <WordGrid word={word} correctLetters={state.correctLetters} />
-      <input
-        type='text'
-        name='guess'
-        id='guess'
-        max={1}
-        onChange={() => handleSubmit(word, dispatch)}
-      />
+      <WordGrid word={state.word} correctLetters={state.correctLetters} />
       <WrongGuesses letters={state.wrongLetters} />
     </div>
   );

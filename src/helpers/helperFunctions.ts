@@ -3,10 +3,8 @@ import { correctGuess, wrongGuess } from "./gameActions";
 const findAllIndexes = (word: string, letter: string) =>
   [...word].map((char, i) => (char === letter ? i : -1)).filter((i) => i !== -1);
 
-export const handleSubmit = (word: string, dispatch: any) => {
-  const input = document.getElementById("guess") as HTMLInputElement;
-  const guessLetter = input.value.toLowerCase();
-
+export const handleSubmit = (letter: string, word: string, dispatch: any) => {
+  const guessLetter = letter.toLowerCase();
   const occurences = findAllIndexes(word, guessLetter);
 
   if (occurences.length === 0) {
@@ -14,6 +12,6 @@ export const handleSubmit = (word: string, dispatch: any) => {
   } else {
     dispatch(correctGuess(guessLetter));
   }
-
-  input.value = "";
 };
+
+export const checkIfWon = () => {};
