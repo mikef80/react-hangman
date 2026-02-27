@@ -14,16 +14,17 @@ function App() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.repeat) return;
+      const letter = e.key;
 
-      if (/^[a-zA-Z]$/.test(e.key)) {
-        handleSubmit(e.key, state.word, dispatch);
+      if (/^[a-zA-Z]$/.test(letter) && !state.guessedLetters.includes(letter)) {
+        handleSubmit(letter, state.word, dispatch);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
 
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [state.word]);
+  }, [state.word, state.guessedLetters]);
 
   useEffect(() => {
     if ((state.gameStatus === "lost" || state.gameStatus === "won") && !state.showStatus) {
