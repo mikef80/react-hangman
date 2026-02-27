@@ -1,10 +1,10 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer } from "react";
 import Canvas from "./components/Canvas/Canvas";
 import Header from "./components/Header/Header";
 import styles from "./App.module.scss";
 import { createInitialState, handleSubmit } from "./helpers/helperFunctions";
-import { gameReducer /* initialState */ } from "./helpers/gameReducer";
-import WrongGuesses from "./components/WrongGuesses/WrongGuesses";
+import { gameReducer } from "./helpers/gameReducer";
+import GuessesGrid from "./components/GuessesGrid/GuessesGrid";
 import WordGrid from "./components/WordGrid/WordGrid";
 import GameStatus from "./components/GamesStatus/GameStatus";
 
@@ -40,8 +40,10 @@ function App() {
       <Header />
       <Canvas remainingGuesses={state.remainingGuesses} />
       <WordGrid word={state.word} correctLetters={state.correctLetters} />
-      <WrongGuesses letters={state.wrongLetters} />
-      {state.showStatus && <GameStatus word={state.word} status={state.gameStatus} dispatch={dispatch} />}
+      <GuessesGrid letters={state.guessedLetters} correctLetters={state.correctLetters} />
+      {state.showStatus && (
+        <GameStatus status={state.gameStatus} word={state.word} dispatch={dispatch} />
+      )}
     </div>
   );
 }

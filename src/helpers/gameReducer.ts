@@ -4,7 +4,7 @@ import { createInitialState } from "./helperFunctions";
 export type GameState = {
   word: string;
   remainingGuesses: number;
-  wrongLetters: string[];
+  guessedLetters: string[];
   correctLetters: string[];
   gameStatus: "playing" | "won" | "lost";
   showStatus: boolean;
@@ -19,7 +19,7 @@ export type GameAction =
 /* export const initialState: GameState = {
   word: ks1Words[Math.floor(Math.random() * ks1Words.length)],
   remainingGuesses: 15,
-  wrongLetters: [],
+  guessedLetters: [],
   correctLetters: [],
   gameStatus: "playing",
   showStatus: false,
@@ -32,7 +32,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       return {
         ...state,
         remainingGuesses: newRemainingGuesses,
-        wrongLetters: [...state.wrongLetters, action.letter],
+        guessedLetters: [...state.guessedLetters, action.letter],
         gameStatus: newRemainingGuesses <= 0 ? "lost" : "playing",
       };
 
@@ -46,6 +46,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       return {
         ...state,
         correctLetters: [...state.correctLetters, action.letter],
+        guessedLetters: [...state.guessedLetters, action.letter],
         gameStatus: hasWon ? "won" : "playing",
       };
 

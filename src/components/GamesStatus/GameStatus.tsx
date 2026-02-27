@@ -1,4 +1,4 @@
-import { resetGame, showState } from "../../helpers/gameActions";
+import { resetGame } from "../../helpers/gameActions";
 import styles from "./GamesStatus.module.scss";
 
 const GameStatus = ({

@@ -22,7 +22,7 @@ export const createInitialState = () => {
   return {
     word: ks1Words[Math.floor(Math.random() * ks1Words.length)],
     remainingGuesses: 15,
-    wrongLetters: [],
+    guessedLetters: [],
     correctLetters: [],
     gameStatus: "playing",
     showStatus: false,
