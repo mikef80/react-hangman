@@ -11,4 +11,15 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+
+  .button {
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .restartIcon {
+      align-self: flex-end;
+    }
+  }
 }
