@@ -1,5 +1,5 @@
 export const ks1Words = [
-"ant" ,"bag"/*,"bat","bed","bee","bin","box","boy","bus","car",
+"ant" ,"bag","bat","bed","bee","bin","box","boy","bus","car",
 "cat","cow","cup","dad","dog","ear","egg","elf","fan","far",
 "fat","fig","fin","fix","fox","fun","gap","gas","gem","get",
 "gig","gum","gun","hat","hen","hip","hit","hop","hot","ice",
@@ -28,5 +28,5 @@ export const ks1Words = [
 "north","ocean","peach","plant","plate","queen","quiet","river","sheep","shell",
 "shirt","skirt","sleep","smile","snake","snow","sound","spoon","sport","stack",
 "stone","storm","sugar","table","teach","tiger","toast","train","truck","water",
-"whale","wheel","white","woman","world","zebra" */
+"whale","wheel","white","woman","world","zebra"
 ];
