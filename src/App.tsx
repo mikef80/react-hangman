@@ -8,33 +8,24 @@ import GuessesGrid from "./components/GuessesGrid/GuessesGrid";
 import WordGrid from "./components/WordGrid/WordGrid";
 import GameStatus from "./components/GamesStatus/GameStatus";
 import MobileKeyboard from "./components/MobileKeyboard/MobileKeyboard";
+import { setPlayerStats } from "./storage/storageHelpers";
 
 function App() {
-  const [state, dispatch] = useReducer(
-    gameReducer,
-    undefined,
-    createInitialState
-  );
+  const [state, dispatch] = useReducer(gameReducer, undefined, createInitialState);
 
   // Detect touch device once
   const isTouchDevice = useMemo(() => {
-    return (
-      "ontouchstart" in window ||
-      navigator.maxTouchPoints > 0
-    );
+    return "ontouchstart" in window || navigator.maxTouchPoints > 0;
   }, []);
 
   // Shared letter handler
   const handleLetter = useCallback(
     (letter: string) => {
-      if (
-        /^[a-zA-Z]$/.test(letter) &&
-        !state.guessedLetters.includes(letter)
-      ) {
+      if (/^[a-zA-Z]$/.test(letter) && !state.guessedLetters.includes(letter)) {
         handleSubmit(letter.toLowerCase(), state.word, dispatch);
       }
     },
-    [state.word, state.guessedLetters, dispatch]
+    [state.word, state.guessedLetters, dispatch],
   );
 
   // Desktop keyboard only
@@ -52,11 +43,8 @@ function App() {
 
   // Game status timer
   useEffect(() => {
-    if (
-      (state.gameStatus === "lost" ||
-        state.gameStatus === "won") &&
-      !state.showStatus
-    ) {
+    if ((state.gameStatus === "lost" || state.gameStatus === "won") && !state.showStatus) {
+      setPlayerStats(state.gameStatus);
       const timer = setTimeout(() => {
         dispatch({ type: "SHOW_STATUS" });
       }, 1000);
@@ -69,14 +57,10 @@ function App() {
     <div className={styles.container}>
       <Header />
       <Canvas remainingGuesses={state.remainingGuesses} />
-      <WordGrid
-        word={state.word}
-        correctLetters={state.correctLetters}
-      />
-      {!isTouchDevice&&<GuessesGrid
-        letters={state.guessedLetters}
-        correctLetters={state.correctLetters}
-      />}
+      <WordGrid word={state.word} correctLetters={state.correctLetters} />
+      {!isTouchDevice && (
+        <GuessesGrid letters={state.guessedLetters} correctLetters={state.correctLetters} />
+      )}
 
       {isTouchDevice && state.gameStatus === "playing" && (
         <MobileKeyboard
@@ -87,11 +71,7 @@ function App() {
       )}
 
       {state.showStatus && (
-        <GameStatus
-          status={state.gameStatus}
-          word={state.word}
-          dispatch={dispatch}
-        />
+        <GameStatus status={state.gameStatus} word={state.word} dispatch={dispatch} />
       )}
     </div>
   );
