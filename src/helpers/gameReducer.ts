@@ -1,4 +1,3 @@
-import { ks1Words } from "../words";
 import { createInitialState } from "./helperFunctions";
 
 export type GameState = {
@@ -15,15 +14,6 @@ export type GameAction =
   | { type: "CORRECT_GUESS"; letter: string }
   | { type: "RESET" }
   | { type: "SHOW_STATUS" };
-
-/* export const initialState: GameState = {
-  word: ks1Words[Math.floor(Math.random() * ks1Words.length)],
-  remainingGuesses: 15,
-  guessedLetters: [],
-  correctLetters: [],
-  gameStatus: "playing",
-  showStatus: false,
-}; */
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {

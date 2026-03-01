@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { line, circle, rect, ellipseArc, cloud } from "./draw";
-import { HelperGrid } from "../HelperGrid/HelperGrid";
+// import { HelperGrid } from "../HelperGrid/HelperGrid";
 
 const steps = [
   (ctx: CanvasRenderingContext2D) => line(ctx, 40, 380, 260, 380, "white"), // 1 — Track
