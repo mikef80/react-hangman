@@ -9,6 +9,7 @@ import WordGrid from "./components/WordGrid/WordGrid";
 import GameStatus from "./components/GamesStatus/GameStatus";
 import MobileKeyboard from "./components/MobileKeyboard/MobileKeyboard";
 import { setPlayerStats } from "./storage/storageHelpers";
+import { disableDevTools } from "./utils/disableDevTools";
 
 function App() {
   const [state, dispatch] = useReducer(gameReducer, undefined, createInitialState);
@@ -27,6 +28,10 @@ function App() {
     },
     [state.word, state.guessedLetters, dispatch],
   );
+
+  useEffect(() => {
+    disableDevTools();
+  }, []);
 
   // Desktop keyboard only
   useEffect(() => {

@@ -14,6 +14,7 @@ export default defineConfig({
         description: "A train-based hangman game",
         display: "standalone",
         theme_color: "#ffffff",
+        orientation: "portrait",
         icons: [
           {
             src: "web-app-manifest-192x192.png",
