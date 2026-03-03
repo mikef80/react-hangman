@@ -32,7 +32,7 @@ const GameStatus = ({
         <span>Lost: {lost}</span>
         <span>Current streak: {currentStreak}</span>
         <span>Best streak: {bestStreak}</span>
-        <span>Overall win rate (%): {(won / (won + lost)) * 100}</span>
+        <span>Overall win rate: {Math.round((won / (won + lost)) * 100)}%</span>
       </p>
       <button className={styles.button} onClick={handleRestart}>
         <RotateCw className={styles.restartIcon} size={14} />
