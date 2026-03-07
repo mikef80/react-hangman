@@ -1,7 +1,5 @@
 import type { GameState } from "../helpers/gameReducer";
 
-type Result = "won" | "lost";
-
 export const getPlayerStats = () => {
   const savedData = localStorage.getItem("derailed");
 
