@@ -26,5 +26,6 @@ export const createInitialState = () => {
     correctLetters: [],
     gameStatus: "playing",
     showStatus: false,
+    currentNumberOfGuesses: 0,
   } as GameState;
 };
