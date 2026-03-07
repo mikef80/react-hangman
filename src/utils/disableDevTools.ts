@@ -6,7 +6,6 @@ export const disableDevTools = () => {
     if (e.key === 'F12') e.preventDefault()
     
     // Ctrl+Shift+I (Chrome, Edge)
-
     if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") e.preventDefault();
 
     // Ctrl+Shift+J (Chrome console)

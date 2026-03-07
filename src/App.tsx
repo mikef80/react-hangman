@@ -49,7 +49,7 @@ function App() {
   // Game status timer
   useEffect(() => {
     if ((state.gameStatus === "lost" || state.gameStatus === "won") && !state.showStatus) {
-      setPlayerStats(state.gameStatus);
+      setPlayerStats(state);
       const timer = setTimeout(() => {
         dispatch({ type: "SHOW_STATUS" });
       }, 1000);

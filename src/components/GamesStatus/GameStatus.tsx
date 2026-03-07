@@ -2,6 +2,7 @@ import { resetGame } from "../../helpers/gameActions";
 import { RotateCw } from "lucide-react";
 import styles from "./GamesStatus.module.scss";
 import { getPlayerStats } from "../../storage/storageHelpers";
+import { mean, mode } from "mathjs";
 
 const GameStatus = ({
   status,
@@ -16,7 +17,13 @@ const GameStatus = ({
     dispatch(resetGame());
   };
 
-  const { won, lost, currentStreak, bestStreak } = getPlayerStats();
+  const { won, lost, currentStreak, bestStreak, guessArray } = getPlayerStats();
+
+  console.log(guessArray);
+
+  const avg = mean(...guessArray);
+  const avgMode = mode(...guessArray);
+  const allGuessesUnique = guessArray.length === new Set(guessArray).size;
 
   return (
     <div className={styles.status}>
@@ -32,6 +39,8 @@ const GameStatus = ({
         <span>Lost: {lost}</span>
         <span>Current streak: {currentStreak}</span>
         <span>Best streak: {bestStreak}</span>
+        <span>Average number of guesses: {avg}</span>
+        {!allGuessesUnique && <span>Average (Mode) guess: {avgMode}</span>}
         <span>Overall win rate: {Math.round((won / (won + lost)) * 100)}%</span>
       </p>
       <button className={styles.button} onClick={handleRestart}>

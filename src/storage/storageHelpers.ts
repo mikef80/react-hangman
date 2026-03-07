@@ -1,3 +1,5 @@
+import type { GameState } from "../helpers/gameReducer";
+
 type Result = "won" | "lost";
 
 export const getPlayerStats = () => {
@@ -5,15 +7,17 @@ export const getPlayerStats = () => {
 
   return savedData
     ? JSON.parse(savedData)
-    : { won: 0, lost: 0, currentStreak: 0, bestStreak: 0 };
+    : { won: 0, lost: 0, currentStreak: 0, bestStreak: 0, guessArray: [] };
 };
 
-export const setPlayerStats = (result: Result) => {
+export const setPlayerStats = (state: GameState) => {
   const newPlayerData = getPlayerStats();
+  const { gameStatus } = state;
 
-  if (result === "won") {
+  if (gameStatus === "won") {
     newPlayerData.won += 1;
     newPlayerData.currentStreak += 1;
+    newPlayerData.guessArray = [...newPlayerData.guessArray, state.currentNumberOfGuesses];
 
     if (newPlayerData.currentStreak > newPlayerData.bestStreak) {
       newPlayerData.bestStreak = newPlayerData.currentStreak;
@@ -21,6 +25,7 @@ export const setPlayerStats = (result: Result) => {
   } else {
     newPlayerData.lost += 1;
     newPlayerData.currentStreak = 0;
+    newPlayerData.guessArray = [...newPlayerData.guessArray, state.currentNumberOfGuesses];
   }
 
   localStorage.setItem("derailed", JSON.stringify(newPlayerData));
