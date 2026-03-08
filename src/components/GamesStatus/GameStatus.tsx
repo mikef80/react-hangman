@@ -21,7 +21,7 @@ const GameStatus = ({
 
   console.log(guessArray);
 
-  const avg = mean(...guessArray);
+  const avg = Math.round(mean(...guessArray));
   const avgMode = mode(...guessArray);
   const allGuessesUnique = guessArray.length === new Set(guessArray).size;
 
