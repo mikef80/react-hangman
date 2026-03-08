@@ -40,7 +40,9 @@ const GameStatus = ({
         <span>Current streak: {currentStreak}</span>
         <span>Best streak: {bestStreak}</span>
         <span>Average number of guesses: {avg}</span>
-        {!allGuessesUnique && <span>Average (Mode) guesses: {avgMode}</span>}
+        {!allGuessesUnique && avgMode.length === 1 && (
+          <span>Average (Mode) guesses: {avgMode}</span>
+        )}
         <span>Overall win rate: {Math.round((won / (won + lost)) * 100)}%</span>
       </p>
       <button className={styles.button} onClick={handleRestart}>
